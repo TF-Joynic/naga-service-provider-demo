@@ -33,7 +33,7 @@ public class ListenerConfig {
     private String namingServerHost;
 
     @Value("${application.naga.naming.server.port}")
-    private String namingServerPort;
+    private Integer namingServerPort;
 
     @Value("${application.naga.naming.server.timeout}")
     private Integer namingServerTimeoutMillis;
@@ -67,6 +67,7 @@ public class ListenerConfig {
         thriftRpcConfig.setTransportClazz(TSocket.class);
         thriftRpcConfig.setHost(namingServerHost);
         thriftRpcConfig.setTimeoutMillis(namingServerTimeoutMillis);
+        thriftRpcConfig.setPort(namingServerPort);
 
         ThriftRpcClientBuilder<ThriftNamingServerPortal.Client> builder
                 = new ThriftRpcClientBuilder<>(thriftRpcConfig);
